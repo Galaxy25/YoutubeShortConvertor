@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "YoutubeShortConvertor",
+    "version": "1.0",
+    "description": "Youtube Short Convertor",
+    "author": "Nathan St. John",
+    "permissions": [
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/shorts/*"],
+            "js": ["content.js"]
+        }
+    ]
+}

@@ -5,7 +5,9 @@
     "description": "Youtube Short Convertor",
     "author": "Nathan St. John",
     "permissions": [
-        "tabs"
+        "tabs",
+        "history",
+        "webNavigation"
     ],
     "background": {
         "service_worker": "background.js"

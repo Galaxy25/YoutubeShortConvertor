@@ -1,9 +1,12 @@
 chrome.tabs.onUpdated.addListener(async (tab) => { 
     let currentTab = await getCurrentTab();
-    console.log(currentTab.url);
-    if (currentTab.url.startsWith("https://www.youtube.com/shorts/"))
+    if (tab.frameId == 0)
     {
-        chrome.tabs.update(tab.id, {url: "https://www.youtube.com/watch?v=" + currentTab.url.substr(31)});
+        if (currentTab.url.startsWith("https://www.youtube.com/shorts/"))
+        {
+            chrome.tabs.update(tab.id, {url: "https://www.youtube.com/watch?v=" + currentTab.url.substr(31)});
+            chrome.history.deleteUrl({url: currentTab.url});
+        }
     }
 });
 
@@ -13,3 +16,5 @@ async function getCurrentTab() {
     let [tab] = await chrome.tabs.query(queryOptions);
     return tab;
   }
+
+  
